@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
   res.send("hello world!");
 });
 
-app.listen(3000, () => {
-  connectDB();
-  console.log("Server is running on http://localhost:3000");
+app.listen(5000, async () => {
+  console.log("Server is running on port 5000");
+  await connectDB();
 });
