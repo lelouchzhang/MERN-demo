@@ -18,6 +18,7 @@ export const createProduct = async (req, res) => {
     return res.status(400).json({ message: "All fields are required" });
   }
 
+  // newProduct是mongo数据库里的这条新增记录
   const newProduct = new Product(product);
 
   try {
@@ -25,7 +26,7 @@ export const createProduct = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "Product created successfully",
-      product: newProduct,
+      newProduct,
     });
   } catch (error) {
     console.error("Error creating product:", error);
