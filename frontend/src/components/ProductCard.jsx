@@ -28,9 +28,12 @@ const ProductCard = ({ product }) => {
   const [updatedP, setUpdatedP] = useState(product);
 
   const toast = useToast();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const textColor = useColorModeValue("gray.600", "gray.200");
   const bgColor = useColorModeValue("white", "gray.800");
   const { deleteProduct, updateProduct } = useProductStore();
+
+  // delete
   const handleDeleteP = async (id) => {
     const { success, message } = await deleteProduct(id);
     if (!success) {
@@ -52,8 +55,7 @@ const ProductCard = ({ product }) => {
     }
   };
 
-  // uodate
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // update
   const handleUpdateP = async (id, updateP) => {
     const { success, message } = await updateProduct(id, updateP);
     if (!success) {
